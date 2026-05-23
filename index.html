@@ -181,6 +181,11 @@
             content: ''; width: 80px; height: 4px; background: var(--mint-green); display: block; margin: 15px auto 0; border-radius: 2px;
         }
 
+        /* قسم نبذة عنا */
+        .about-us { padding: 80px 5%; background-color: var(--bg-light); text-align: center; }
+        .about-content { max-width: 900px; margin: 0 auto; color: var(--text-gray); font-size: 1.15rem; line-height: 1.9; }
+        .about-content strong { color: var(--mint-green); }
+
         /* قسم الخدمات */
         .services { padding: 80px 5%; background-color: var(--primary-white); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
@@ -226,7 +231,7 @@
             .contact-form { grid-template-columns: 1fr; }
             .full-width { grid-column: span 1; }
             .hero h1 { font-size: 2.3rem; }
-            .hero-logo-container { max-width: 280px; } /* تصغير الشعار قليلاً في الهواتف */
+            .hero-logo-container { max-width: 280px; }
         }
     </style>
 </head>
@@ -252,6 +257,7 @@
         
         <div class="nav-links">
             <a href="#hero" onclick="closeSidebar()"><i class="fa-solid fa-house"></i> الرئيسية</a>
+            <a href="#about-us" onclick="closeSidebar()"><i class="fa-solid fa-building"></i> من نحن</a>
             <a href="#services" onclick="closeSidebar()"><i class="fa-solid fa-server"></i> خدماتنا التقنية</a>
             <a href="#features" onclick="closeSidebar()"><i class="fa-solid fa-star"></i> لماذا تختارنا</a>
             <a href="#contact-us" onclick="closeSidebar()"><i class="fa-solid fa-envelope"></i> اطلب خدمة</a>
@@ -280,6 +286,16 @@
             <a href="#contact-us" class="btn-primary">اطلب استشارتك التقنية الآن</a>
         </header>
 
+        <section id="about-us" class="about-us">
+            <h2 class="section-title">نبذة عنا</h2>
+            <div class="about-content">
+                <p>
+                    <strong>Bitwise</strong> هي شركة ليبية رائدة متخصصة في تقديم حلول تقنية متكاملة تواكب أحدث التطورات العالمية. 
+                    نحن نؤمن بأن التكنولوجيا هي المحرك الأساسي لنجاح أي مؤسسة، ولذلك نكرس جهودنا وخبراتنا لهندسة أنظمة برمجية، وتأسيس بنية تحتية للشبكات، وتوفير حلول ذكية تلبي احتياجات السوق وتساعد الشركات على تحقيق أهدافها بكفاءة وأمان واحترافية.
+                </p>
+            </div>
+        </section>
+
         <section id="services" class="services">
             <h2 class="section-title">حلول متكاملة لنجاحك</h2>
             <div class="services-grid">
@@ -299,9 +315,9 @@
                     <p>تصميم وتمديد شبكات السيرفرات (LAN/WAN)، تجهيز كبائن الاتصالات، وتركيب أجهزة التوجيه لضمان استقرار تدفق البيانات.</p>
                 </div>
                 <div class="service-card">
-                    <i class="fa-solid fa-shield-halved service-icon"></i>
-                    <h3>الأمن السيبراني</h3>
-                    <p>تأمين البنية التحتية ضد الاختراقات، إعداد أنظمة الجدران النارية (Firewalls)، وتوفير حلول النسخ الاحتياطي المشفر.</p>
+                    <i class="fa-solid fa-video service-icon"></i>
+                    <h3>الأنظمة المرئية والصوتية</h3>
+                    <p>توريد وتركيب أحدث كاميرات المراقبة، وأنظمة الحضور والانصراف، والأنظمة الصوتية المتكاملة لتأمين وإدارة منشأتك بكفاءة.</p>
                 </div>
                 <div class="service-card">
                     <i class="fa-solid fa-cloud service-icon"></i>
@@ -360,7 +376,7 @@
                             <option value="تصميم وتطوير المواقع">تصميم وتطوير المواقع الإلكترونية</option>
                             <option value="الأنظمة المالية والإدارية">الأنظمة المالية والإدارية</option>
                             <option value="هندسة وتأسيس الشبكات">هندسة وتأسيس الشبكات</option>
-                            <option value="الأمن السيبراني">الأمن السيبراني</option>
+                            <option value="الأنظمة المرئية والصوتية">كاميرات المراقبة والأنظمة المرئية والصوتية</option>
                             <option value="إدارة الخدمات السحابية">إدارة الخدمات السحابية</option>
                             <option value="أنظمة نقاط البيع POS">أنظمة نقاط البيع (POS)</option>
                             <option value="استشارة تقنية">استشارة تقنية / خدمات أخرى</option>
