@@ -1,686 +1,353 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kayan System | ريادة الحلول التقنية والأنظمة</title>
-<meta name="description" content="KayanTech — شركة ليبية متخصصة في تطوير الأنظمة البرمجية، هندسة الشبكات، أنظمة المراقبة، والحلول السحابية في مدينة البيضاء.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wathba — حلول تقنية متكاملة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Space+Grotesk:wght@600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
-:root{
-  --ink:#0A1A38;
-  --ink-soft:#10254d;
-  --cobalt:#1D4ED8;
-  --azure:#3B82F6;
-  --sky:#EAF1FF;
-  --paper:#F7FAFF;
-  --white:#FFFFFF;
-  --slate:#5A6677;
-  --slate-light:#8893A5;
-  --hair:#DCE6F7;
-  --sidebar-width:288px;
-  --r-lg:22px;
-  --r-md:16px;
-  --r-sm:12px;
-  --shadow-soft:0 2px 8px rgba(10,26,56,.04), 0 12px 32px rgba(29,78,216,.05);
-  --shadow-card:0 1px 2px rgba(10,26,56,.04), 0 18px 40px rgba(29,78,216,.07);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'IBM Plex Sans Arabic',sans-serif;
-  background:var(--paper);
-  color:var(--ink);
-  line-height:1.75;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-.mono{font-family:'IBM Plex Mono',monospace}
-.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+  :root{
+    --ink:#161A3D; --ink2:#1F2550; --paper:#F3F2EC; --blue:#3D5AFE; --teal:#18D6C4;
+    --soft:#6B6F86; --line:#E4E2D8;
+    --head:"Cairo",sans-serif; --body:"Tajawal",sans-serif; --lat:"Space Grotesk",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.8;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .grad-text{background:linear-gradient(120deg,var(--blue),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1,h2,h3,h4{font-family:var(--head);line-height:1.3}
+  .wrap{max-width:960px;margin:0 auto;padding:0 26px}
+  section{padding:78px 0;scroll-margin-top:72px}
 
-/* ============ utility: eyebrow tag ============ */
-.eyebrow{
-  display:inline-flex;align-items:center;gap:9px;
-  font-family:'IBM Plex Mono',monospace;
-  font-size:.74rem;font-weight:500;letter-spacing:.14em;
-  color:var(--cobalt);text-transform:uppercase;
-  background:var(--sky);
-  padding:7px 15px;border-radius:50px;
-  border:1px solid var(--hair);
-}
-.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--cobalt);box-shadow:0 0 0 4px rgba(29,78,216,.15)}
+  /* ---------- TOPBAR ---------- */
+  .topbar{position:sticky;top:0;z-index:55;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(243,242,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .tlogo{display:flex;align-items:center;gap:12px}
+  .tlogo .badge{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--blue),var(--teal));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(24,214,196,.3);flex:0 0 auto}
+  .tlogo .badge svg{width:27px;height:27px}
+  .tlogo .wm{font-family:var(--lat);font-weight:700;font-size:1.4rem;line-height:1;direction:ltr}
+  .tlogo .sub{font-family:var(--lat);font-size:.52rem;letter-spacing:.2em;color:var(--blue);direction:ltr;text-transform:uppercase;margin-top:3px}
+  .menu-btn{display:flex;align-items:center;gap:9px;background:var(--ink);color:#fff;border:none;border-radius:11px;padding:10px 16px;cursor:pointer;font-family:var(--body);font-weight:700;font-size:.92rem;transition:.15s}
+  .menu-btn:hover{background:var(--ink2)}
+  .menu-btn .bars{display:flex;flex-direction:column;gap:4px}
+  .menu-btn .bars span{width:18px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+  .menu-btn.x .bars span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .menu-btn.x .bars span:nth-child(2){opacity:0}
+  .menu-btn.x .bars span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .menu-btn .lbl{min-width:48px;text-align:center}
 
-/* ============ toggle button ============ */
-.toggle-btn{
-  position:fixed;top:22px;left:22px;z-index:1300;
-  background:var(--white);color:var(--cobalt);
-  border:1px solid var(--hair);
-  width:52px;height:52px;border-radius:15px;
-  font-size:1.35rem;cursor:pointer;
-  box-shadow:var(--shadow-soft);
-  display:flex;align-items:center;justify-content:center;
-  transition:all .3s ease;
-}
-.toggle-btn:hover{background:var(--sky);transform:scale(1.04)}
-.toggle-btn:focus-visible{outline:3px solid rgba(29,78,216,.4);outline-offset:2px}
+  /* ---------- SIDEBAR (LEFT-anchored drawer) ---------- */
+  .sidebar{position:fixed;top:0;bottom:0;left:0;right:auto;width:300px;max-width:84vw;
+    background:linear-gradient(180deg,#1B2050,#141832);color:#fff;z-index:60;
+    display:flex;flex-direction:column;padding:22px 18px;
+    transform:translateX(-100%);transition:transform .34s cubic-bezier(.4,.85,.25,1);
+    box-shadow:18px 0 50px rgba(0,0,0,.42)}
+  .sidebar.open{transform:translateX(0)}
+  .s-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .s-head .bm{display:flex;align-items:center;gap:12px}
+  .s-head .badge{width:50px;height:50px;border-radius:14px;background:linear-gradient(140deg,var(--blue),var(--teal));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(24,214,196,.3);flex:0 0 auto}
+  .s-head .badge svg{width:32px;height:32px}
+  .s-head .wm{font-family:var(--lat);font-weight:700;font-size:1.45rem;line-height:1;direction:ltr}
+  .s-head .sub{font-family:var(--lat);font-size:.52rem;letter-spacing:.22em;color:var(--teal);direction:ltr;text-transform:uppercase;margin-top:4px}
+  .close{background:rgba(255,255,255,.08);border:none;color:#fff;width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:.15s;flex:0 0 auto}
+  .close:hover{background:rgba(255,255,255,.18);transform:rotate(90deg)}
 
-/* ============ backdrop ============ */
-.backdrop{
-  position:fixed;inset:0;background:rgba(10,26,56,.45);
-  backdrop-filter:blur(3px);z-index:1150;
-  opacity:0;visibility:hidden;transition:all .4s ease;
-}
-body.sidebar-open .backdrop{opacity:1;visibility:visible}
+  .menu{display:flex;flex-direction:column;gap:5px;flex:1;margin-top:6px}
+  .menu .cap{font-family:var(--lat);font-size:.6rem;letter-spacing:.18em;color:rgba(255,255,255,.4);text-transform:uppercase;direction:ltr;margin:2px 10px 10px}
+  .menu a{display:flex;align-items:center;gap:13px;padding:13px 14px;border-radius:12px;color:rgba(255,255,255,.8);font-weight:500;font-size:1.02rem;position:relative;
+    opacity:0;transform:translateX(-22px);
+    transition:opacity .4s ease,transform .4s ease,background .15s,color .15s}
+  .menu a svg{width:20px;height:20px;flex:0 0 auto;opacity:.85}
+  .menu a:hover{background:rgba(255,255,255,.07);color:#fff;padding-inline-start:18px}
+  .menu a.active{background:linear-gradient(120deg,rgba(61,90,254,.26),rgba(24,214,196,.16));color:#fff}
+  .menu a.active::before{content:"";position:absolute;inset-inline-start:0;top:20%;height:60%;width:3px;border-radius:3px;background:linear-gradient(var(--blue),var(--teal))}
+  .sidebar.open .menu a{opacity:1;transform:translateX(0)}
+  .sidebar.open .menu a:nth-of-type(1){transition-delay:.10s}
+  .sidebar.open .menu a:nth-of-type(2){transition-delay:.16s}
+  .sidebar.open .menu a:nth-of-type(3){transition-delay:.22s}
+  .sidebar.open .menu a:nth-of-type(4){transition-delay:.28s}
 
-/* ============ sidebar ============ */
-.sidebar{
-  width:var(--sidebar-width);height:100vh;
-  background:var(--white);
-  position:fixed;left:0;top:0;
-  display:flex;flex-direction:column;
-  padding:90px 22px 30px;
-  z-index:1200;
-  box-shadow:8px 0 40px rgba(10,26,56,.10);
-  overflow-y:auto;
-  transform:translateX(-100%);
-  transition:transform .45s cubic-bezier(.4,0,.2,1);
-  border-right:1px solid var(--hair);
-}
-body.sidebar-open .sidebar{transform:translateX(0)}
-.sidebar .logo-container{display:flex;justify-content:center;margin-bottom:14px;text-decoration:none}
-.sidebar-tagline{
-  text-align:center;font-family:'IBM Plex Mono',monospace;
-  font-size:.66rem;letter-spacing:.12em;color:var(--slate-light);
-  padding-bottom:24px;margin-bottom:24px;border-bottom:1px dashed var(--hair);
-}
-.nav-links{display:flex;flex-direction:column;gap:6px;flex-grow:1}
-.nav-links a{
-  color:var(--ink);text-decoration:none;font-weight:500;font-size:1.02rem;
-  padding:13px 18px;border-radius:var(--r-sm);
-  transition:all .25s ease;display:flex;align-items:center;gap:15px;position:relative;
-}
-.nav-links a i{font-size:1.05rem;width:24px;text-align:center;color:var(--slate-light);transition:color .25s ease}
-.nav-links a::before{
-  content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);
-  width:3px;height:0;background:var(--cobalt);border-radius:3px;transition:height .25s ease;
-}
-.nav-links a:hover{background:var(--sky);color:var(--cobalt)}
-.nav-links a:hover i{color:var(--cobalt)}
-.nav-links a:hover::before{height:60%}
-.nav-links a:focus-visible{outline:2px solid rgba(29,78,216,.4);outline-offset:1px}
-.sidebar-foot{
-  margin-top:20px;padding-top:20px;border-top:1px solid var(--hair);
-  font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--slate-light);text-align:center;letter-spacing:.06em;
-}
+  .side-foot{border-top:1px solid rgba(255,255,255,.1);padding-top:18px;margin-top:10px;opacity:0;transform:translateY(12px);transition:.4s}
+  .sidebar.open .side-foot{opacity:1;transform:none;transition-delay:.34s}
+  .side-foot .cbtn{display:block;text-align:center;background:linear-gradient(120deg,var(--blue),var(--teal));color:#08123a;font-family:var(--head);font-weight:700;padding:12px;border-radius:12px;margin-bottom:14px;font-size:.95rem}
+  .side-foot .ci{font-size:.84rem;display:flex;flex-direction:column;gap:9px}
+  .side-foot .ci a{display:flex;gap:9px;align-items:center;color:rgba(255,255,255,.8)}
+  .side-foot .ci svg{width:15px;height:15px;color:var(--teal)}
+  .side-foot .ci .num{direction:ltr}
+  .overlay{position:fixed;inset:0;background:rgba(10,12,30,.55);backdrop-filter:blur(2px);z-index:58;opacity:0;visibility:hidden;transition:.25s}
+  .overlay.show{opacity:1;visibility:visible}
 
-/* ============ main ============ */
-.main-content{width:100%;display:flex;flex-direction:column}
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--ink);color:#fff;overflow:hidden;padding:0}
+  #net{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+  .hero-in{position:relative;z-index:2;padding:84px 0 96px}
+  .eyebrow{font-family:var(--lat);font-size:.74rem;letter-spacing:.24em;color:var(--teal);text-transform:uppercase;direction:ltr;margin-bottom:18px}
+  .hero h1{font-weight:800;font-size:clamp(2.1rem,5.4vw,3.4rem);margin-bottom:18px}
+  .hero p{max-width:60ch;color:rgba(255,255,255,.8);font-size:1.06rem;margin-bottom:30px}
+  .hero-btns{display:flex;gap:13px;flex-wrap:wrap}
+  .btn-primary{background:linear-gradient(120deg,var(--blue),var(--teal));color:#08123a;font-family:var(--head);font-weight:700;padding:14px 26px;border-radius:12px;font-size:1rem;transition:.18s;box-shadow:0 8px 26px rgba(24,214,196,.28);border:none;cursor:pointer}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-primary:disabled{opacity:.6;cursor:default;transform:none}
+  .btn-ghost{border:1px solid rgba(255,255,255,.28);color:#fff;padding:14px 26px;border-radius:12px;font-weight:700;font-family:var(--head);font-size:1rem;transition:.15s}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
 
-/* ============ HERO ============ */
-.hero{
-  position:relative;min-height:100vh;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  text-align:center;padding:120px 6% 90px;
-  background:
-    radial-gradient(1200px 600px at 50% -5%, var(--sky) 0%, transparent 60%),
-    var(--paper);
-  overflow:hidden;
-}
-#net-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.hero-glow{
-  position:absolute;top:18%;left:50%;transform:translateX(-50%);
-  width:560px;height:560px;z-index:0;pointer-events:none;
-  background:radial-gradient(circle, rgba(59,130,246,.16) 0%, transparent 65%);
-}
-.hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;max-width:880px}
-.hero-logo-container{
-  width:100%;max-width:340px;margin-bottom:30px;
-  filter:drop-shadow(0 14px 30px rgba(29,78,216,.18));
-  opacity:0;transform:translateY(22px);
-}
-.hero-inner .eyebrow{opacity:0;transform:translateY(22px);margin-bottom:26px}
-.hero h1{
-  font-size:clamp(2.1rem,5vw,3.5rem);font-weight:700;line-height:1.45;
-  margin-bottom:22px;color:var(--ink);letter-spacing:-.01em;
-  opacity:0;transform:translateY(22px);
-}
-.hero h1 .accent{color:var(--cobalt);position:relative;white-space:nowrap}
-.hero h1 .accent::after{
-  content:"";position:absolute;right:0;bottom:2px;width:100%;height:10px;
-  background:rgba(59,130,246,.18);border-radius:4px;z-index:-1;
-}
-.hero p.lead{
-  font-size:clamp(1.02rem,1.6vw,1.22rem);max-width:620px;margin-bottom:38px;
-  color:var(--slate);opacity:0;transform:translateY(22px);
-}
-.hero-cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;opacity:0;transform:translateY(22px)}
+  .sec-eyebrow{font-family:var(--lat);font-size:.72rem;letter-spacing:.16em;color:var(--blue);text-transform:uppercase;margin-bottom:10px}
+  .sec-eyebrow::before{content:"// ";opacity:.6}
+  .sec-title{font-weight:800;font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:14px}
+  .sec-lead{color:var(--soft);max-width:56ch;margin-bottom:40px}
 
-.btn-primary{
-  background:var(--cobalt);color:var(--white);
-  padding:16px 34px;border-radius:50px;text-decoration:none;
-  font-weight:600;font-size:1.02rem;font-family:inherit;
-  transition:all .3s ease;border:none;cursor:pointer;
-  display:inline-flex;align-items:center;gap:10px;
-  box-shadow:0 8px 24px rgba(29,78,216,.32);
-}
-.btn-primary:hover{transform:translateY(-3px);background:var(--ink-soft);box-shadow:0 12px 30px rgba(29,78,216,.42)}
-.btn-primary:focus-visible{outline:3px solid rgba(29,78,216,.4);outline-offset:3px}
-.btn-ghost{
-  background:transparent;color:var(--cobalt);
-  padding:16px 30px;border-radius:50px;text-decoration:none;
-  font-weight:600;font-size:1.02rem;
-  border:1.5px solid var(--hair);
-  transition:all .3s ease;display:inline-flex;align-items:center;gap:10px;
-}
-.btn-ghost:hover{border-color:var(--cobalt);background:var(--white);transform:translateY(-3px)}
+  /* ---------- services ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .mod{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;position:relative;overflow:hidden;cursor:default;
+       opacity:0;transform:translateY(26px) scale(.96);transition:opacity .55s,transform .55s cubic-bezier(.2,.75,.25,1),box-shadow .25s,border-color .25s}
+  .mod.in{opacity:1;transform:none}
+  .mod::after{content:"";position:absolute;inset-block:0;inset-inline-end:0;width:3px;background:linear-gradient(var(--blue),var(--teal));opacity:0;transition:.25s}
+  .mod:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(22,26,61,.13);border-color:transparent}
+  .mod:hover::after{opacity:1}
+  .mod .ic{width:48px;height:48px;border-radius:13px;background:rgba(61,90,254,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:.28s}
+  .mod:hover .ic{transform:translateY(-3px) scale(1.08) rotate(-4deg);background:linear-gradient(135deg,rgba(61,90,254,.2),rgba(24,214,196,.2))}
+  .mod .ic svg{width:27px;height:27px}
+  .mod .tag{font-family:var(--lat);font-size:.64rem;letter-spacing:.14em;color:var(--blue);direction:ltr;display:inline-block;margin-bottom:8px;border:1px solid rgba(61,90,254,.25);padding:2px 8px;border-radius:999px}
+  .mod h3{font-weight:700;font-size:1.18rem;margin-bottom:8px}
+  .mod p{color:var(--soft);font-size:.93rem}
 
-.scroll-cue{
-  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
-  z-index:2;color:var(--slate-light);font-family:'IBM Plex Mono',monospace;
-  font-size:.66rem;letter-spacing:.18em;display:flex;flex-direction:column;align-items:center;gap:8px;
-  opacity:0;animation:cueIn .8s ease 1.4s forwards;
-}
-.scroll-cue i{font-size:1rem;color:var(--cobalt);animation:bob 1.8s ease-in-out infinite}
-@keyframes cueIn{to{opacity:.9}}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+  .why{background:var(--ink);color:#fff}
+  .why .sec-eyebrow{color:var(--teal)}
+  .why .sec-lead{color:rgba(255,255,255,.7)}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .feat{display:flex;gap:14px;padding:20px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.03);transition:.25s}
+  .feat:hover{background:rgba(255,255,255,.07);transform:translateY(-3px)}
+  .feat .leap{flex:0 0 auto;width:38px;height:38px}
+  .feat h4{font-weight:700;font-size:1.08rem;margin-bottom:4px}
+  .feat p{color:rgba(255,255,255,.66);font-size:.9rem}
 
-/* hero load sequence */
-body.loaded .hero-logo-container{animation:rise .7s cubic-bezier(.2,.7,.2,1) .1s forwards}
-body.loaded .hero-inner .eyebrow{animation:rise .7s cubic-bezier(.2,.7,.2,1) .25s forwards}
-body.loaded .hero h1{animation:rise .7s cubic-bezier(.2,.7,.2,1) .4s forwards}
-body.loaded .hero p.lead{animation:rise .7s cubic-bezier(.2,.7,.2,1) .55s forwards}
-body.loaded .hero-cta{animation:rise .7s cubic-bezier(.2,.7,.2,1) .7s forwards}
-@keyframes rise{to{opacity:1;transform:translateY(0)}}
+  /* ---------- contact + form ---------- */
+  .contact{background:linear-gradient(160deg,#fff,#EFEEE6)}
+  .contact-card{background:var(--ink);color:#fff;border-radius:22px;padding:42px 34px;display:grid;grid-template-columns:1.25fr 1fr;gap:36px}
+  .contact-card h2{font-weight:800;font-size:clamp(1.6rem,4vw,2.1rem);margin-bottom:10px}
+  .contact-card .intro{color:rgba(255,255,255,.72);margin-bottom:22px}
+  .cform input,.cform textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:11px;padding:13px 15px;color:#fff;font-family:var(--body);font-size:.96rem;margin-bottom:13px;transition:.15s}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--teal);background:rgba(255,255,255,.09)}
+  .cform input::placeholder,.cform textarea::placeholder{color:rgba(255,255,255,.5)}
+  .cform textarea{min-height:104px;resize:vertical}
+  .cform .btn-primary{width:100%}
+  .cform .hint{font-size:.86rem;margin-top:10px;min-height:1.3em;color:var(--teal)}
+  .cinfo{display:flex;flex-direction:column;gap:15px;align-self:center}
+  .cinfo .row{display:flex;gap:12px;align-items:center;font-size:.96rem}
+  .cinfo .row .k{font-family:var(--lat);font-size:.62rem;letter-spacing:.12em;color:var(--teal);direction:ltr;width:66px;text-transform:uppercase}
+  .cinfo .row a,.cinfo .row span{color:#fff}
+  .cinfo .num{direction:ltr}
 
-/* ============ shared section title ============ */
-.section-head{text-align:center;max-width:680px;margin:0 auto 56px}
-.section-head .eyebrow{margin-bottom:18px}
-.section-title{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.4}
-.section-sub{color:var(--slate);font-size:1.05rem;margin-top:14px}
+  footer{background:var(--ink2);color:rgba(255,255,255,.7);padding:28px 0;text-align:center;font-size:.86rem}
+  footer .wm{font-family:var(--lat);font-weight:700;color:#fff;font-size:1.05rem;direction:ltr}
 
-/* reveal on scroll */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
+  .reveal{opacity:0;transform:translateY(18px);transition:.6s ease}
+  .reveal.in{opacity:1;transform:none}
 
-/* ============ ABOUT ============ */
-.about{padding:110px 8%;background:var(--white);border-bottom:1px solid var(--hair)}
-.about-wrap{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:54px;align-items:center}
-.about-lead .eyebrow{margin-bottom:20px}
-.about-lead h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;line-height:1.45;margin-bottom:20px;color:var(--ink)}
-.about-lead p{color:var(--slate);font-size:1.06rem;line-height:2}
-.about-lead strong{color:var(--cobalt);font-weight:600}
-.about-spec{display:flex;flex-direction:column;gap:14px}
-.spec-row{
-  display:flex;align-items:center;gap:16px;padding:18px 20px;
-  background:var(--paper);border:1px solid var(--hair);border-radius:var(--r-md);
-  transition:all .3s ease;
-}
-.spec-row:hover{border-color:var(--cobalt);transform:translateX(-4px)}
-.spec-icon{
-  width:46px;height:46px;flex-shrink:0;border-radius:12px;
-  background:var(--sky);color:var(--cobalt);
-  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
-}
-.spec-label{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--slate-light);text-transform:uppercase}
-.spec-value{font-weight:600;color:var(--ink);font-size:1.02rem}
-
-/* ============ SERVICES ============ */
-.services{padding:110px 6%;background:var(--paper)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;max-width:1180px;margin:0 auto}
-.service-card{
-  position:relative;background:var(--white);
-  padding:38px 30px 34px;border-radius:var(--r-lg);
-  border:1px solid var(--hair);box-shadow:var(--shadow-soft);
-  transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;
-  overflow:hidden;
-}
-.service-card::before{
-  content:"";position:absolute;top:0;right:0;width:70px;height:70px;
-  background:
-    radial-gradient(circle at 8px 8px, var(--cobalt) 2px, transparent 2.5px),
-    radial-gradient(circle at 28px 8px, var(--azure) 1.6px, transparent 2.1px),
-    radial-gradient(circle at 8px 28px, var(--azure) 1.6px, transparent 2.1px);
-  background-size:100% 100%;opacity:.25;transition:opacity .4s ease;
-}
-.service-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-card);border-color:rgba(29,78,216,.4)}
-.service-card:hover::before{opacity:.6}
-.service-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
-.service-icon{
-  width:62px;height:62px;border-radius:16px;
-  background:linear-gradient(135deg, var(--sky), #d6e4ff);
-  color:var(--cobalt);display:flex;align-items:center;justify-content:center;
-  font-size:1.65rem;transition:all .4s ease;
-}
-.service-card:hover .service-icon{background:var(--cobalt);color:var(--white);transform:rotate(-6deg) scale(1.06)}
-.service-tag{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.12em;color:var(--slate-light);border:1px solid var(--hair);padding:5px 11px;border-radius:50px}
-.service-card h3{font-size:1.24rem;color:var(--ink);margin-bottom:13px;font-weight:700}
-.service-card p{color:var(--slate);font-size:.96rem;line-height:1.85}
-
-/* ============ WHY (features) ============ */
-.why{padding:110px 6%;background:var(--ink);color:var(--white);position:relative;overflow:hidden}
-.why::before{
-  content:"";position:absolute;inset:0;opacity:.5;
-  background-image:radial-gradient(circle, rgba(59,130,246,.16) 1px, transparent 1.5px);
-  background-size:34px 34px;
-  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 50%, #000 0%, transparent 75%);
-  mask-image:radial-gradient(ellipse 70% 60% at 50% 50%, #000 0%, transparent 75%);
-}
-.why .section-head{position:relative;z-index:2}
-.why .section-title{color:var(--white)}
-.why .eyebrow{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.25);color:#9DC0FF}
-.why .eyebrow .dot{background:#9DC0FF;box-shadow:0 0 0 4px rgba(59,130,246,.2)}
-.features-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;max-width:1080px;margin:0 auto}
-.feature-item{
-  text-align:center;padding:40px 28px;border-radius:var(--r-lg);
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
-  transition:all .4s ease;backdrop-filter:blur(4px);
-}
-.feature-item:hover{background:rgba(59,130,246,.10);border-color:rgba(59,130,246,.35);transform:translateY(-8px)}
-.feature-node{
-  width:70px;height:70px;margin:0 auto 22px;border-radius:50%;
-  background:rgba(59,130,246,.14);border:1px solid rgba(59,130,246,.3);
-  display:flex;align-items:center;justify-content:center;
-  color:#7FB0FF;font-size:1.7rem;transition:all .4s ease;
-}
-.feature-item:hover .feature-node{background:var(--cobalt);color:#fff;border-color:var(--cobalt);box-shadow:0 0 0 8px rgba(29,78,216,.18)}
-.feature-item h4{font-size:1.18rem;margin-bottom:12px;color:var(--white);font-weight:600}
-.feature-item p{color:#A9B6CC;font-size:.96rem;line-height:1.8}
-
-/* ============ CONTACT ============ */
-.contact{padding:110px 6%;background:var(--white)}
-.form-container{
-  max-width:840px;margin:0 auto;background:var(--paper);
-  padding:46px;border-radius:28px;border:1px solid var(--hair);box-shadow:var(--shadow-soft);
-}
-.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.full-width{grid-column:span 2}
-.input-group{display:flex;flex-direction:column;gap:8px}
-.input-group label{font-weight:500;color:var(--ink);font-size:.94rem}
-.contact-form input,.contact-form select,.contact-form textarea{
-  width:100%;padding:14px 16px;border:1px solid var(--hair);border-radius:var(--r-sm);
-  font-family:'IBM Plex Sans Arabic',sans-serif;font-size:1rem;
-  transition:all .3s ease;background:var(--white);color:var(--ink);
-}
-.contact-form input::placeholder,.contact-form textarea::placeholder{color:#B6C2D6}
-.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{
-  outline:none;border-color:var(--cobalt);box-shadow:0 0 0 4px rgba(29,78,216,.12)
-}
-.form-note{font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--slate-light);text-align:center;margin-top:6px;letter-spacing:.04em}
-
-/* ============ FOOTER ============ */
-footer{background:var(--ink);color:#A9B6CC;padding:72px 6% 28px;position:relative;overflow:hidden}
-footer::before{
-  content:"";position:absolute;inset:0;opacity:.4;
-  background-image:radial-gradient(circle, rgba(59,130,246,.14) 1px, transparent 1.5px);
-  background-size:30px 30px;
-  -webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);
-  mask-image:linear-gradient(180deg,#000,transparent 70%);
-}
-.footer-grid{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:space-between;gap:46px;max-width:1180px;margin:0 auto}
-.footer-brand{flex:2;min-width:300px}
-.footer-logo-container{margin-bottom:20px}
-.footer-brand .description{margin-bottom:22px;line-height:1.9;color:#A9B6CC;max-width:440px}
-.footer-social{display:flex;gap:12px}
-.footer-social a{
-  width:42px;height:42px;border-radius:11px;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  color:#C5D2E8;display:flex;align-items:center;justify-content:center;font-size:1.05rem;
-  text-decoration:none;transition:all .3s ease;
-}
-.footer-social a:hover{background:var(--cobalt);color:#fff;border-color:var(--cobalt);transform:translateY(-3px)}
-.footer-contact{flex:1;min-width:260px}
-.footer-contact h3{color:var(--white);margin-bottom:24px;font-size:1.1rem;font-weight:600;display:inline-flex;align-items:center;gap:10px}
-.footer-contact h3::before{content:"";width:22px;height:2px;background:var(--cobalt);border-radius:2px}
-.contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;font-size:.98rem}
-.contact-item i{color:var(--azure);font-size:1.15rem;width:24px;text-align:center;margin-top:4px}
-.contact-item a,.contact-item span{color:#A9B6CC;text-decoration:none;transition:color .3s ease;line-height:1.6}
-.contact-item a:hover{color:var(--white)}
-.copyright{position:relative;z-index:2;text-align:center;padding-top:26px;border-top:1px solid rgba(255,255,255,.08);font-size:.9rem;color:#8493AC;margin-top:48px;font-family:'IBM Plex Mono',monospace;letter-spacing:.03em}
-
-/* ============ responsive ============ */
-@media (max-width:992px){
-  .about-wrap{grid-template-columns:1fr;gap:38px}
-  .contact-form{grid-template-columns:1fr}
-  .full-width{grid-column:span 1}
-  .form-container{padding:32px}
-}
-@media (max-width:560px){
-  .hero{padding:110px 6% 80px}
-  .hero-cta{flex-direction:column;width:100%}
-  .hero-cta .btn-primary,.hero-cta .btn-ghost{justify-content:center;width:100%}
-}
-
-/* ============ reduced motion ============ */
-@media (prefers-reduced-motion:reduce){
-  *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
-  .hero-logo-container,.hero-inner .eyebrow,.hero h1,.hero p.lead,.hero-cta{opacity:1 !important;transform:none !important}
-  .reveal{opacity:1 !important;transform:none !important}
-}
+  @media (max-width:860px){
+    .tlogo .sub{display:none}
+    .grid,.why-grid{grid-template-columns:1fr}
+    .contact-card{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){.reveal,.mod{transition:none;opacity:1;transform:none}#net{display:none}.hero{background:linear-gradient(160deg,#161A3D,#1F2550)}.menu a{opacity:1;transform:none}.side-foot{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<button class="toggle-btn" id="menuBtn" onclick="toggleSidebar()" aria-label="فتح القائمة">
-  <i class="fa-solid fa-bars-staggered" id="menuIcon"></i>
-</button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3D5AFE"/><stop offset="1" stop-color="#18D6C4"/></linearGradient>
+  <symbol id="leap" viewBox="0 0 80 80" fill="none">
+    <circle cx="40" cy="20" r="6" fill="url(#lg)"/>
+    <path d="M24 44 L40 30 L56 44" stroke="url(#lg)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 64 L40 50 L60 64" stroke="url(#lg)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="leapw" viewBox="0 0 80 80" fill="none">
+    <circle cx="40" cy="20" r="6" fill="#fff"/>
+    <path d="M24 44 L40 30 L56 44" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 64 L40 50 L60 64" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
 
-<div class="backdrop" id="backdrop" onclick="closeSidebar()"></div>
-
-<nav class="sidebar" id="sidebar" aria-label="القائمة الرئيسية">
-  <a href="#hero" class="logo-container" onclick="closeSidebar()" aria-label="KayanTech الرئيسية">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 70" width="210">
-      <g transform="translate(5, 2)" stroke="#1d4ed8" stroke-width="3.5" fill="none" stroke-linejoin="round">
-        <path d="M5,5 L5,65 M5,35 L40,5 M5,35 L40,65" stroke-width="4"/>
-        <circle cx="5" cy="5" r="3" fill="#ffffff"/><circle cx="5" cy="65" r="3" fill="#ffffff"/>
-        <circle cx="5" cy="35" r="3" fill="#ffffff"/><circle cx="40" cy="5" r="3" fill="#1d4ed8"/>
-        <circle cx="40" cy="65" r="3" fill="#1d4ed8"/>
-      </g>
-      <text x="75" y="36" font-family="'IBM Plex Sans Arabic',sans-serif" font-size="28" font-weight="700" fill="#0A1A38" style="direction:ltr;">Kayan</text>
-      <text x="156" y="36" font-family="'IBM Plex Sans Arabic',sans-serif" font-size="28" font-weight="700" fill="#1d4ed8" style="direction:ltr;">Tech</text>
-    </svg>
-  </a>
-  <div class="sidebar-tagline mono">TECHNOLOGY · SOLUTIONS</div>
-
-  <div class="nav-links">
-    <a href="#hero" onclick="closeSidebar()"><i class="fa-solid fa-house"></i> الرئيسية</a>
-    <a href="#about" onclick="closeSidebar()"><i class="fa-solid fa-address-card"></i> نبذة عنا</a>
-    <a href="#services" onclick="closeSidebar()"><i class="fa-solid fa-server"></i> خدماتنا التقنية</a>
-    <a href="#features" onclick="closeSidebar()"><i class="fa-solid fa-star"></i> لماذا تختارنا</a>
-    <a href="#contact-us" onclick="closeSidebar()"><i class="fa-solid fa-paper-plane"></i> اطلب خدمة</a>
-    <a href="#footer-contact" onclick="closeSidebar()"><i class="fa-solid fa-phone"></i> اتصل بنا</a>
+<!-- TOPBAR -->
+<div class="topbar" id="top">
+  <div class="tlogo">
+    <div class="badge"><svg><use href="#leapw"/></svg></div>
+    <div><div class="wm">Wathba</div><div class="sub">Technology Solutions</div></div>
   </div>
-  <div class="sidebar-foot mono">AL-BAYDA · LIBYA<br>© 2026 KAYANTECH</div>
-</nav>
+  <button class="menu-btn" id="menuBtn" aria-label="القائمة">
+    <span class="bars"><span></span><span></span><span></span></span>
+    <span class="lbl">القائمة</span>
+  </button>
+</div>
 
-<main class="main-content">
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="s-head">
+    <div class="bm">
+      <div class="badge"><svg><use href="#leapw"/></svg></div>
+      <div><div class="wm">Wathba</div><div class="sub">Technology Solutions</div></div>
+    </div>
+    <button class="close" id="closeBtn" aria-label="إغلاق">✕</button>
+  </div>
+  <nav class="menu">
+    <div class="cap">القائمة</div>
+    <a href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>الرئيسية</a>
+    <a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>خدماتنا</a>
+    <a href="#why"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9z"/></svg>لماذا Wathba</a>
+    <a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>تواصل معنا</a>
+  </nav>
+  <div class="side-foot">
+    <a class="cbtn" href="#contact">ابدأ مشروعك</a>
+    <div class="ci">
+      <a href="tel:+218943951480"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-3 2a14 14 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span class="num">+218 94 395 1480</span></a>
+      <a href="mailto:info@wathba.ly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span dir="ltr">info@wathba.ly</span></a>
+    </div>
+  </div>
+</aside>
+<div class="overlay" id="overlay"></div>
 
-  <header id="hero" class="hero">
-    <canvas id="net-canvas"></canvas>
-    <div class="hero-glow"></div>
-    <div class="hero-inner">
-      <div class="hero-logo-container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 70" width="100%">
-          <g transform="translate(5, 2)" stroke="#1d4ed8" stroke-width="3.5" fill="none" stroke-linejoin="round">
-            <path d="M5,5 L5,65 M5,35 L40,5 M5,35 L40,65" stroke-width="4"/>
-            <circle cx="5" cy="5" r="3" fill="#ffffff"/><circle cx="5" cy="65" r="3" fill="#ffffff"/>
-            <circle cx="5" cy="35" r="3" fill="#ffffff"/><circle cx="40" cy="5" r="3" fill="#1d4ed8"/>
-            <circle cx="40" cy="65" r="3" fill="#1d4ed8"/>
-          </g>
-          <text x="75" y="36" font-family="'IBM Plex Sans Arabic',sans-serif" font-size="28" font-weight="700" fill="#0A1A38" style="direction:ltr;">Kayan</text>
-          <text x="156" y="36" font-family="'IBM Plex Sans Arabic',sans-serif" font-size="28" font-weight="700" fill="#1d4ed8" style="direction:ltr;">Tech</text>
-          <text x="75" y="54" font-family="'IBM Plex Mono',monospace" font-size="8.5" font-weight="500" fill="#8893A5" letter-spacing="1" style="direction:ltr;">TECHNOLOGY SOLUTIONS</text>
-        </svg>
-      </div>
-      <span class="eyebrow"><span class="dot"></span> شركة ليبية للحلول التقنية</span>
-      <h1>نُهندس <span class="accent">المستقبل الرقمي</span><br>لمؤسستك</h1>
-      <p class="lead">من تطوير الأنظمة البرمجية المتقدمة إلى بناء البنية التحتية للشبكات الموثوقة — نُمكّن أعمالك من النمو بأحدث التقنيات، بمعايير هندسية دقيقة.</p>
-      <div class="hero-cta">
-        <a href="#contact-us" class="btn-primary"><i class="fa-solid fa-bolt"></i> اطلب استشارتك التقنية</a>
-        <a href="#services" class="btn-ghost">تصفّح خدماتنا <i class="fa-solid fa-arrow-left" style="font-size:.85em"></i></a>
-      </div>
+<!-- HERO -->
+<section class="hero">
+  <canvas id="net"></canvas>
+  <div class="wrap hero-in">
+    <div class="eyebrow">Wathba · Technology Solutions</div>
+    <h1>قفزتك نحو الرقمنة تبدأ من <span class="grad-text">Wathba</span></h1>
+    <p>شركة تقنية ليبية متخصّصة في بناء الأنظمة والمواقع والحلول الرقمية المتكاملة — نحوّل أعمالك إلى منظومة ذكية تسبق منافسيك بخطوة.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact">ابدأ مشروعك</a>
+      <a class="btn-ghost" href="#services">تصفّح خدماتنا</a>
     </div>
-    <div class="scroll-cue mono">SCROLL <i class="fa-solid fa-chevron-down"></i></div>
-  </header>
+  </div>
+</section>
 
-  <section id="about" class="about">
-    <div class="about-wrap">
-      <div class="about-lead reveal">
-        <span class="eyebrow"><span class="dot"></span> من نحن</span>
-        <h2>شريكك الاستراتيجي لبناء مستقبل رقمي مستدام</h2>
-        <p>نحن في <strong>KayanTech</strong> شركة ليبية متخصصة نُعيد تعريف الكفاءة المؤسساتية: من هندسة بنية تحتية متطورة للشبكات، إلى تطوير الأنظمة الإدارية والمالية الذكية، وتأمين منشآتكم بأحدث الأنظمة الصوتية والمرئية. نلتزم بحلول مخصّصة ومعايير جودة عالمية تضمن لعملائنا النمو الآمن والمستمر.</p>
-      </div>
-      <div class="about-spec reveal">
-        <div class="spec-row">
-          <div class="spec-icon"><i class="fa-solid fa-layer-group"></i></div>
-          <div><div class="spec-label mono">SERVICE AREAS</div><div class="spec-value">٦ مجالات تقنية متكاملة</div></div>
-        </div>
-        <div class="spec-row">
-          <div class="spec-icon"><i class="fa-solid fa-location-dot"></i></div>
-          <div><div class="spec-label mono">HEADQUARTERS</div><div class="spec-value">مدينة البيضاء — ليبيا</div></div>
-        </div>
-        <div class="spec-row">
-          <div class="spec-icon"><i class="fa-solid fa-headset"></i></div>
-          <div><div class="spec-label mono">SUPPORT</div><div class="spec-value">دعم فني مستمر ومتواصل</div></div>
-        </div>
-      </div>
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-eyebrow reveal">ما نقدّمه</div>
+    <h2 class="sec-title reveal">أنظمة وحلول تقنية متكاملة</h2>
+    <p class="sec-lead reveal">من الفكرة إلى التشغيل — نبني لك حلولًا رقمية تناسب السوق الليبي وتنمو مع أعمالك.</p>
+    <div class="grid">
+      <div class="mod"><div class="ic"><svg><use href="#leap"/></svg></div><span class="tag">WEB</span><h3>تطوير المواقع والتطبيقات</h3><p>مواقع وتطبيقات ويب عصرية، سريعة، ومتجاوبة مع كل الأجهزة.</p></div>
+      <div class="mod"><div class="ic"><svg><use href="#leap"/></svg></div><span class="tag">ERP</span><h3>أنظمة إدارة الموارد</h3><p>أنظمة ERP متكاملة: محاسبة، موارد بشرية، مخزون، وتأجير تمويلي.</p></div>
+      <div class="mod"><div class="ic"><svg><use href="#leap"/></svg></div><span class="tag">NETWORK</span><h3>الشبكات والبنية التحتية</h3><p>تصميم وتركيب شبكات موثوقة وآمنة للشركات والمؤسسات.</p></div>
+      <div class="mod"><div class="ic"><svg><use href="#leap"/></svg></div><span class="tag">CCTV</span><h3>أنظمة المراقبة</h3><p>حلول مراقبة وحماية ذكية تعمل على مدار الساعة بدقّة عالية.</p></div>
+      <div class="mod"><div class="ic"><svg><use href="#leap"/></svg></div><span class="tag">CLOUD</span><h3>الحوسبة السحابية</h3><p>استضافة وحلول سحابية آمنة وقابلة للتوسّع حسب نموّك.</p></div>
+      <div class="mod"><div class="ic"><svg><use href="#leap"/></svg></div><span class="tag">POS</span><h3>أنظمة نقاط البيع</h3><p>أنظمة نقاط بيع للمتاجر والمطاعم بإدارة مخزون ومبيعات كاملة.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="services" class="services">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span> خدماتنا</span>
-      <h2 class="section-title">حلول متكاملة لنجاحك</h2>
-      <p class="section-sub">منظومة خدمات هندسية تغطي كامل احتياجات مؤسستك الرقمية.</p>
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-eyebrow reveal">لماذا Wathba</div>
+    <h2 class="sec-title reveal">نصنع الفرق بقفزة</h2>
+    <p class="sec-lead reveal">لا نقدّم خدمة فحسب، بل نبني شريكًا تقنيًا يدفع أعمالك للأمام.</p>
+    <div class="why-grid">
+      <div class="feat reveal"><svg class="leap"><use href="#leapw"/></svg><div><h4>تنفيذ سريع</h4><p>نسلّم مشاريعك في وقت قياسي دون المساس بالجودة.</p></div></div>
+      <div class="feat reveal"><svg class="leap"><use href="#leapw"/></svg><div><h4>دعم محلي ليبي</h4><p>فريق قريب منك يفهم احتياجات السوق ويدعمك مباشرة.</p></div></div>
+      <div class="feat reveal"><svg class="leap"><use href="#leapw"/></svg><div><h4>حلول مصمّمة لك</h4><p>نبني الأنظمة على مقاس عملك، لا قوالب جاهزة.</p></div></div>
+      <div class="feat reveal"><svg class="leap"><use href="#leapw"/></svg><div><h4>تقنيات حديثة وآمنة</h4><p>أحدث الأدوات مع أعلى معايير الأمان وحماية البيانات.</p></div></div>
     </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-top"><div class="service-icon"><i class="fa-solid fa-code"></i></div><span class="service-tag mono">WEB</span></div>
-        <h3>تصميم وتطوير المواقع</h3>
-        <p>بناء مواقع إلكترونية احترافية ومتاجر ذكية متجاوبة مع جميع الأجهزة، لتعزيز تواجدك الرقمي وعكس هوية مؤسستك بأفضل صورة.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-top"><div class="service-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div><span class="service-tag mono">ERP</span></div>
-        <h3>الأنظمة المالية والإدارية</h3>
-        <p>برمجة أنظمة المحاسبة، وتخطيط الموارد (ERP)، وإدارة شؤون الموظفين المصمّمة خصيصاً لتلبّي الدورة المستندية لشركتك.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-top"><div class="service-icon"><i class="fa-solid fa-network-wired"></i></div><span class="service-tag mono">NETWORK</span></div>
-        <h3>هندسة وتأسيس الشبكات</h3>
-        <p>تصميم وتمديد شبكات السيرفرات (LAN/WAN)، تجهيز كبائن الاتصالات، وتركيب أجهزة التوجيه لضمان استقرار تدفق البيانات.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-top"><div class="service-icon"><i class="fa-solid fa-video"></i></div><span class="service-tag mono">CCTV · AV</span></div>
-        <h3>الأنظمة المرئية والصوتية</h3>
-        <p>توريد وتركيب أحدث كاميرات المراقبة، وأنظمة الحضور والانصراف، والأنظمة الصوتية المتكاملة لتأمين وإدارة منشأتك بكفاءة.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-top"><div class="service-icon"><i class="fa-solid fa-cloud"></i></div><span class="service-tag mono">CLOUD</span></div>
-        <h3>إدارة الخدمات السحابية</h3>
-        <p>إدارة البنية التحتية السحابية باستخدام منصات عالمية مثل <span class="ltr" style="font-weight:600">AWS</span> و<span class="ltr" style="font-weight:600">Azure</span> لضمان مرونة وأمان أنظمتك.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-top"><div class="service-icon"><i class="fa-solid fa-cash-register"></i></div><span class="service-tag mono">POS</span></div>
-        <h3>أنظمة نقاط البيع</h3>
-        <p>توريد وتركيب أنظمة نقاط البيع المتكاملة للمحلات والمطاعم، مع ربط مباشر بنظام المخازن والمحاسبة المركزي.</p>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section id="features" class="why">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span> لماذا نحن</span>
-      <h2 class="section-title">لماذا KayanTech؟</h2>
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-card reveal">
+      <div class="cform">
+        <h2>لنبدأ قفزتك التقنية</h2>
+        <p class="intro">اترك اسمك وبريدك ورسالتك، وسيصلنا طلبك على بريد Wathba مباشرة وسنعاود التواصل معك.</p>
+        <input id="f-name" type="text" placeholder="الاسم الكامل" />
+        <input id="f-email" type="email" dir="ltr" placeholder="بريدك الإلكتروني" />
+        <input id="f-phone" type="tel" dir="ltr" placeholder="رقم الهاتف (اختياري)" />
+        <textarea id="f-msg" placeholder="اكتب تفاصيل طلبك أو مشروعك..."></textarea>
+        <button class="btn-primary" id="send">إرسال الطلب</button>
+        <div class="hint" id="hint"></div>
+      </div>
+      <div class="cinfo">
+        <div class="row"><span class="k">Address</span><span>البيضاء، ليبيا</span></div>
+        <div class="row"><span class="k">Phone</span><a class="num" href="tel:+218943951480">+218 94 395 1480</a></div>
+        <div class="row"><span class="k">Email</span><a href="mailto:info@wathba.ly">info@wathba.ly</a></div>
+        <div class="row"><span class="k">Web</span><a href="#" dir="ltr">www.wathba.ly</a></div>
+      </div>
     </div>
-    <div class="features-grid">
-      <div class="feature-item reveal">
-        <div class="feature-node"><i class="fa-solid fa-gears"></i></div>
-        <h4>حلول مخصّصة</h4>
-        <p>لا نعتمد قوالب جاهزة، بل نُهندس أنظمتنا لتناسب طبيعة عملك بدقة.</p>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-node"><i class="fa-solid fa-headset"></i></div>
-        <h4>دعم فني مستمر</h4>
-        <p>فريقنا متواجد لتقديم الدعم وضمان عدم تعطّل أعمالك في أي وقت.</p>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-node"><i class="fa-solid fa-check-double"></i></div>
-        <h4>جودة واعتمادية</h4>
-        <p>نستخدم أحدث التقنيات القياسية العالمية في كل ما نبنيه.</p>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section id="contact-us" class="contact">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span> تواصل معنا</span>
-      <h2 class="section-title">اطلب خدمتك أو استشارتك</h2>
-      <p class="section-sub">أخبرنا باحتياجك وسيتواصل معك فريقنا في أقرب وقت.</p>
-    </div>
-    <div class="form-container reveal">
-      <form action="https://formspree.io/f/mredaldo" method="POST" class="contact-form">
-        <div class="input-group">
-          <label for="name">الاسم الكامل / اسم الشركة *</label>
-          <input type="text" id="name" name="الاسم" placeholder="اكتب اسمك أو اسم شركتك" required>
-        </div>
-        <div class="input-group">
-          <label for="phone">رقم الهاتف *</label>
-          <input type="tel" id="phone" name="الهاتف" placeholder="مثال: 0910000000" required>
-        </div>
-        <div class="input-group full-width">
-          <label for="email">البريد الإلكتروني</label>
-          <input type="email" id="email" name="البريد" placeholder="example@domain.com">
-        </div>
-        <div class="input-group full-width">
-          <label for="service">نوع الخدمة المطلوبة *</label>
-          <select id="service" name="الخدمة" required>
-            <option value="" disabled selected>— يرجى اختيار الخدمة —</option>
-            <option value="تصميم وتطوير المواقع">تصميم وتطوير المواقع الإلكترونية</option>
-            <option value="الأنظمة المالية والإدارية">الأنظمة المالية والإدارية</option>
-            <option value="هندسة وتأسيس الشبكات">هندسة وتأسيس الشبكات</option>
-            <option value="الأنظمة المرئية والصوتية">كاميرات المراقبة والأنظمة المرئية والصوتية</option>
-            <option value="إدارة الخدمات السحابية">إدارة الخدمات السحابية</option>
-            <option value="أنظمة نقاط البيع POS">أنظمة نقاط البيع (POS)</option>
-            <option value="استشارة تقنية">استشارة تقنية / خدمات أخرى</option>
-          </select>
-        </div>
-        <div class="input-group full-width">
-          <label for="message">رسالتك / تفاصيل طلبك *</label>
-          <textarea id="message" name="الرسالة" rows="5" placeholder="اكتب تفاصيل طلبك أو استفسارك هنا..." required></textarea>
-        </div>
-        <div class="full-width">
-          <button type="submit" class="btn-primary" style="width:100%;justify-content:center"><i class="fa-solid fa-paper-plane"></i> إرسال الطلب الآن</button>
-          <p class="form-note mono">نحترم خصوصيتك — بياناتك تُستخدم للتواصل فقط.</p>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <footer id="footer-contact">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo-container">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 70" width="220">
-            <g transform="translate(5, 2)" stroke="#3B82F6" stroke-width="3.5" fill="none" stroke-linejoin="round">
-              <path d="M5,5 L5,65 M5,35 L40,5 M5,35 L40,65" stroke-width="4"/>
-              <circle cx="5" cy="5" r="3" fill="#ffffff"/><circle cx="5" cy="65" r="3" fill="#ffffff"/>
-              <circle cx="5" cy="35" r="3" fill="#ffffff"/><circle cx="40" cy="5" r="3" fill="#3B82F6"/>
-              <circle cx="40" cy="65" r="3" fill="#3B82F6"/>
-            </g>
-            <text x="75" y="36" font-family="'IBM Plex Sans Arabic',sans-serif" font-size="28" font-weight="700" fill="#ffffff" style="direction:ltr;">Kayan</text>
-            <text x="156" y="36" font-family="'IBM Plex Sans Arabic',sans-serif" font-size="28" font-weight="700" fill="#7FB0FF" style="direction:ltr;">Tech</text>
-          </svg>
-        </div>
-        <p class="description">شريكك الاستراتيجي في رحلة التحوّل الرقمي. نجمع بين الشغف التكنولوجي والخبرة العملية لتقديم حلول ذكية ترتقي بأداء المؤسسات في ليبيا.</p>
-        <div class="footer-social">
-          <a href="#" aria-label="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="#" aria-label="لينكدإن"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="https://kayansystem.ly" aria-label="الموقع"><i class="fa-solid fa-globe"></i></a>
-        </div>
-      </div>
-      <div class="footer-contact">
-        <h3>بيانات التواصل</h3>
-        <div class="contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:info@kayansystem.ly" class="ltr">info@kayansystem.ly</a></div>
-        <div class="contact-item"><i class="fa-solid fa-phone"></i><a href="tel:+218919643009" class="ltr">+218 91 964 3009</a></div>
-        <div class="contact-item"><i class="fa-solid fa-phone"></i><a href="tel:+218943951480" class="ltr">+218 94 395 1480</a></div>
-        <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>ليبيا، مدينة البيضاء<br>شارع عبدالمنعم رياض، مجمع القافلة (الطابق الثاني)</span></div>
-      </div>
-    </div>
-    <div class="copyright">© 2026 — جميع الحقوق محفوظة لشركة KayanTech للحلول التقنية والأنظمة</div>
-  </footer>
-
-</main>
+<footer>
+  <div class="wrap"><div class="wm">Wathba</div><div>© 2026 Wathba — جميع الحقوق محفوظة.</div></div>
+</footer>
 
 <script>
-const body=document.body, menuIcon=document.getElementById('menuIcon');
-function toggleSidebar(){
-  body.classList.toggle('sidebar-open');
-  const open=body.classList.contains('sidebar-open');
-  menuIcon.className=open?'fa-solid fa-xmark':'fa-solid fa-bars-staggered';
-  document.getElementById('menuBtn').setAttribute('aria-label',open?'إغلاق القائمة':'فتح القائمة');
-}
-function closeSidebar(){
-  body.classList.remove('sidebar-open');
-  menuIcon.className='fa-solid fa-bars-staggered';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSidebar()});
+  var sb=document.getElementById('sidebar'),ov=document.getElementById('overlay'),btn=document.getElementById('menuBtn'),cl=document.getElementById('closeBtn');
+  function openMenu(){sb.classList.add('open');ov.classList.add('show');btn.classList.add('x')}
+  function closeMenu(){sb.classList.remove('open');ov.classList.remove('show');btn.classList.remove('x')}
+  function toggleMenu(){sb.classList.contains('open')?closeMenu():openMenu()}
+  btn.onclick=toggleMenu; ov.onclick=closeMenu; cl.onclick=closeMenu;
+  window.addEventListener('scroll',function(){ if(sb.classList.contains('open')) closeMenu(); },{passive:true});
 
-/* hero load */
-window.addEventListener('load',()=>body.classList.add('loaded'));
+  var mlinks=[].slice.call(document.querySelectorAll('.menu a'));
+  mlinks.forEach(function(a){ a.addEventListener('click',function(){
+    mlinks.forEach(function(x){x.classList.remove('active')}); a.classList.add('active'); closeMenu();
+  }); });
 
-/* scroll reveal */
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
-},{threshold:.14});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  var ids=['top','services','why','contact'];
+  var secs=ids.map(function(id){return document.getElementById(id)}).filter(Boolean);
+  var spy=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){
+    mlinks.forEach(function(x){x.classList.toggle('active',x.getAttribute('href')==='#'+e.target.id)});
+  }});},{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(s){spy.observe(s)});
 
-/* ===== network topology canvas ===== */
-(function(){
-  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  const canvas=document.getElementById('net-canvas');
-  const ctx=canvas.getContext('2d');
-  let w,h,nodes=[],raf,DPR=Math.min(window.devicePixelRatio||1,2);
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)} });},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(i%6*0.05)+'s';io.observe(el)});
+  document.querySelectorAll('.mod').forEach(function(el,i){el.style.transitionDelay=(i*0.09)+'s';io.observe(el)});
 
-  function size(){
-    const hero=canvas.parentElement;
-    w=hero.clientWidth; h=hero.clientHeight;
-    canvas.width=w*DPR; canvas.height=h*DPR;
-    canvas.style.width=w+'px'; canvas.style.height=h+'px';
-    ctx.setTransform(DPR,0,0,DPR,0,0);
-    build();
-  }
-  function build(){
-    const density=Math.min(Math.max((w*h)/26000,26),58);
-    nodes=[];
-    for(let i=0;i<density;i++){
-      nodes.push({
-        x:Math.random()*w, y:Math.random()*h,
-        vx:(Math.random()-.5)*.28, vy:(Math.random()-.5)*.28,
-        r:Math.random()*1.6+1.1,
-        bright:Math.random()>.78
-      });
+  // contact form -> sends to company email via FormSubmit (no backend needed)
+  var send=document.getElementById('send'),hint=document.getElementById('hint');
+  function setHint(msg,color){hint.style.color=color;hint.textContent=msg;}
+  send.onclick=function(){
+    var n=(document.getElementById('f-name').value||'').trim();
+    var em=(document.getElementById('f-email').value||'').trim();
+    var p=(document.getElementById('f-phone').value||'').trim();
+    var m=(document.getElementById('f-msg').value||'').trim();
+    if(!n||!em||!m){ setHint('يرجى إدخال الاسم والبريد وتفاصيل الطلب.','#ff9b9b'); return; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ setHint('يرجى إدخال بريد إلكتروني صحيح.','#ff9b9b'); return; }
+    send.disabled=true; setHint('جارٍ الإرسال...','#cfd6ff');
+    fetch('https://formsubmit.co/ajax/info@wathba.ly',{
+      method:'POST',
+      headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify({ name:n, email:em, phone:p, message:m, _subject:'طلب جديد من موقع Wathba', _template:'table' })
+    })
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(d && (d.success===true || d.success==='true')){
+        setHint('تم إرسال طلبك بنجاح ✓ سنعاود التواصل معك قريبًا.','var(--teal)');
+        document.getElementById('f-name').value='';document.getElementById('f-email').value='';document.getElementById('f-phone').value='';document.getElementById('f-msg').value='';
+      } else { setHint('تعذّر الإرسال حاليًا. حاول لاحقًا أو راسلنا على info@wathba.ly','#ff9b9b'); }
+    })
+    .catch(function(){ setHint('تعذّر الإرسال حاليًا. حاول لاحقًا أو راسلنا على info@wathba.ly','#ff9b9b'); })
+    .finally(function(){ send.disabled=false; });
+  };
+
+  // hero network
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(!reduce){
+    var cv=document.getElementById('net'),cx=cv.getContext('2d'),W,H,pts;
+    function size(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;init()}
+    function init(){var n=Math.min(60,Math.floor(W/22));pts=[];for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vy:-(0.15+Math.random()*0.4),r:1+Math.random()*1.6})}
+    function tick(){
+      cx.clearRect(0,0,W,H);
+      for(var k=0;k<pts.length;k++){var p=pts[k];p.y+=p.vy;if(p.y<-10){p.y=H+10;p.x=Math.random()*W}}
+      for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<108){cx.strokeStyle='rgba(120,160,255,'+(0.16*(1-d/108))+')';cx.lineWidth=1;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}
+      for(var q=0;q<pts.length;q++){var pp=pts[q];cx.fillStyle='rgba(24,214,196,.85)';cx.beginPath();cx.arc(pp.x,pp.y,pp.r,0,7);cx.fill()}
+      requestAnimationFrame(tick);
     }
+    window.addEventListener('resize',size);size();tick();
   }
-  const LINK=150;
-  function draw(){
-    ctx.clearRect(0,0,w,h);
-    for(let i=0;i<nodes.length;i++){
-      const a=nodes[i];
-      for(let j=i+1;j<nodes.length;j++){
-        const b=nodes[j], dx=a.x-b.x, dy=a.y-b.y, d=Math.hypot(dx,dy);
-        if(d<LINK){
-          const al=(1-d/LINK)*.16;
-          ctx.strokeStyle='rgba(29,78,216,'+al+')';
-          ctx.lineWidth=1;
-          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
-        }
-      }
-    }
-    for(const n of nodes){
-      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
-      ctx.fillStyle=n.bright?'rgba(59,130,246,.85)':'rgba(29,78,216,.5)';
-      ctx.fill();
-      if(n.bright){
-        ctx.beginPath();ctx.arc(n.x,n.y,n.r+3,0,Math.PI*2);
-        ctx.fillStyle='rgba(59,130,246,.12)';ctx.fill();
-      }
-    }
-  }
-  function step(){
-    for(const n of nodes){
-      n.x+=n.vx;n.y+=n.vy;
-      if(n.x<0||n.x>w)n.vx*=-1;
-      if(n.y<0||n.y>h)n.vy*=-1;
-    }
-    draw();raf=requestAnimationFrame(step);
-  }
-  size();
-  if(reduce){draw();} else {step();}
-  let t;window.addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(()=>{cancelAnimationFrame(raf);size();if(!reduce)step();},200)});
-})();
 </script>
 </body>
 </html>
